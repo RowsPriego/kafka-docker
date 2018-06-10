@@ -1,11 +1,11 @@
 version: '2'
 services:
   zookeeper:
-    image: wurstmeister/zookeeper
+    image: bd/zookeeper
     ports:
       - "2181:2181"
   kafka:
-    build: .
+    image: bd/kafka
     ports:
       - "9092"
     environment:
@@ -13,3 +13,7 @@ services:
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+#networks:
+#  default:
+#    # Use a custom driver
+#    driver: custom-driver-1
